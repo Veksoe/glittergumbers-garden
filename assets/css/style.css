@@ -1,19 +1,24 @@
 /* --- IMPORTS --- */
-
+@import url('https://fonts.googleapis.com/css2?family=Rum+Raisin&family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 
 /* --- VARIABLES --- */
 :root {
 
     /* COLORS */
-    --primaryColor: gray;
-    --secondaryColor: lightGray;
-    --accentColor: lightSlateGray;
-    --interactableColor: darkSlateGrey;
-    --hoverButtonColor: dimGray;
+    /* --primaryColor: #E2C8E0;
+    --secondaryColor: #C9E3F6;
+    --accentColor: #F9E5A3;
+    --interactableColor: #F7C6C7;
+    --hoverButtonColor: #e6acad; */
+    --primaryColor: #c4c1c3;
+    --secondaryColor: #7faecf;
+    --accentColor: #91908e;
+    --interactableColor: #F7C6C7;
+    --hoverButtonColor: #e6acad;
     --disableButtonColor: silver;
-    --backgroundColor: whiteSmoke;
-    --baseTextDarkColor: black;
+    --backgroundColor: #ecf5f2;
+    --baseTextDarkColor: #2c272c;
 
 
     /* TEXT  */
@@ -28,9 +33,10 @@
     --xLargeSpacing: 50px;
 
     /* DETAILS */
-    --borderRadius: 3px;
+    --borderRadius: 15px;
+    --borderRadiusSmall: 7px;
     --round: 50%;
-    --shadow: 3px 3px 8px gray;
+    --shadow: 0px 0px 10px 1px #00000085;
 }
 
 /* --- UTILLITIES --- */
@@ -48,62 +54,91 @@
 
 body {
     margin: 0;
+    background-color: var(--backgroundColor);
+
 }
 
 main {
     display: grid;
-    grid-template-columns: var(--standardSpacing) repeat(4, 1fr) var(--standardSpacing);
+    grid-template-columns: var(--standardSpacing) repeat(12, 1fr) var(--standardSpacing);
+    max-width: 1300px;
+    margin: auto;
 }
 
 section {
     grid-column: 2/-2;
+    display: flex;
+    gap: var(--mediumSpacing);
 }
 
-article {}
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
 
-a {}
-
-i {}
-
-/* --- TEXT --- */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6,
-p {
-    grid-column: 2 / -2;
+p,
+input,
+button {
+    color: var(--baseTextDarkColor);
+    font-family: "Shantell Sans", cursive;
+
 }
 
 h1 {
-    font-size: 1.8rem;
+    font-size: 3rem;
     text-transform: uppercase;
     margin: var(--mediumSpacing) 0;
     text-align: center;
-    color: var(--primaryColor);
+    font-family: "Rum Raisin", sans-serif;
+    font-weight: 900;
 }
 
 h2 {
-    font-size: 1.5rem;
-    color: var(--accentColor);
-    font-style: italic;
+    font-size: 1.6rem;
     margin: 0px;
-    color: var(--primaryColor);
+
 }
 
-h3 {
+.gameContainer h2 {
+    font-weight: 500;
+    padding: 18px 25px;
+    border-bottom: 1px solid var(--accentColor);
+    width: 100%;
+    text-align: center;
+
+}
+
+/* h3 {
     font-size: 1rem;
     margin: 0px;
-    color: var(--secondaryColor);
-}
+} */
 
 p {
     margin: 0 0 var(--smallSpacing) 0;
-    color: var(--baseTextDarkColor);
+
 }
 
-/* --- BUTTONS --- */
+.correct {
+    color: rgb(40, 151, 40);
+}
+
+.wrong {
+    color: rgb(221, 71, 71);
+}
+
+.hidden {
+    display: none;
+}
+
+
 button {
     cursor: pointer;
 }
@@ -118,4 +153,237 @@ a .btn {
 a .btn:hover {
     background: var(--hoverButtonColor);
     transform: scale(1.1);
+}
+
+article {}
+
+a {}
+
+i {}
+
+
+/* --- GAMECARDS --- */
+a.gameCard {
+    display: block;
+    text-decoration: none;
+    width: calc(100%/4);
+    height: 190px;
+    background: var(--interactableColor);
+    border-radius: var(--borderRadius);
+    box-shadow: var(--shadow);
+    font-size: 1.3rem;
+    transition: all 0.4s;
+    overflow: hidden;
+}
+
+a.gameCard:hover {
+    transform: scale(1.05);
+    background: var(--primaryColor);
+}
+
+a.gameCard .firstContent {
+    height: 100%;
+    width: 100%;
+    border-radius: var(--borderRadius);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: all 0.4s;
+
+}
+
+a.gameCard:hover .firstContent {
+    height: 0;
+    opacity: 0;
+
+}
+
+a.gameCard .secondContent {
+    height: 0;
+    width: 100%;
+    border-radius: var(--borderRadius);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--mediumSpacing);
+
+    opacity: 0;
+    font-size: 0;
+    transform: rotate(90deg) scale(-1);
+    transition: all 0.4s;
+
+}
+
+a.gameCard:hover .secondContent {
+    height: 100%;
+    opacity: 1;
+    font-size: 1rem;
+    transform: rotate(0deg);
+}
+
+/* --- GAME AREA --- */
+.gameContainer {
+    display: flex;
+    justify-self: center;
+    flex-direction: column;
+    background-color: var(--primaryColor);
+    width: 650px;
+    border-radius: var(--borderRadiusSmall);
+    margin-bottom: 30px;
+
+}
+
+.content p {
+    font-size: 1.2rem;
+    margin-bottom: var(--smallSpacing);
+}
+
+.details p .counter {
+    font-weight: 500;
+}
+
+.content input {
+    width: 100%;
+    height: 60px;
+    font-size: 1.2rem;
+    outline: none;
+    padding: 0 16px;
+    border-radius: var(--borderRadiusSmall);
+    border: 1px solid var(--accentColor);
+}
+
+.gameContainer .message {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 10px 25px;
+
+}
+
+.gameContainer h2 {
+    font-weight: 500;
+    padding: 18px 25px;
+    border-bottom: 1px solid var(--accentColor);
+    width: 100%;
+    text-align: center;
+
+}
+
+
+/* --- WORD SCRAMBLE --- */
+
+.gameContainer .content {
+    margin: 25px 20px 35px;
+}
+
+.content .word {
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 24px;
+    text-transform: uppercase;
+    margin-right: -24px;
+    font-family: "Rum Raisin", sans-serif;
+
+}
+
+.content .hintContainer {
+    text-align: center;
+    margin: 25px;
+}
+
+.content .hintContainer p {
+    margin: 0;
+}
+
+.content .details {
+    margin: 25px 25px var(--smallSpacing);
+    display: flex;
+    justify-content: space-between;
+}
+
+.content .buttonContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.content button {
+    margin: var(--standardSpacing);
+    border: none;
+    outline: none;
+    padding: 15px 0;
+    width: 50%;
+    border-radius: var(--borderRadiusSmall);
+    font-size: 1.2rem;
+    font-weight: 500;
+    box-shadow: 5px 5px 5px 1px #6e6e6e5b;
+    transition: .3s;
+}
+
+.content .checkWord {
+    background: var(--secondaryColor);
+}
+
+.content .checkWord:hover {
+    transform: scale(1.05);
+    background: #77a6c7;
+}
+
+.content .restart {
+    background: rgb(96, 196, 96);
+}
+
+.content .restart:hover {
+    transform: scale(1.05);
+    background: rgb(94, 187, 94);
+}
+
+
+@media screen and (max-width: 700px) and (min-width: 300px) {
+
+    /* --- GAME CARDS --- */
+    a.gameCard {
+        width: calc(100%/2);
+    }
+
+
+
+    /* --- WORD SCRAMBLE --- */
+
+    .gameContainer {
+        width: 100%;
+    }
+
+    .gameContainer h2 {
+        font-size: 1.2rem;
+    }
+
+    .gameContainer .content {
+        margin-top: 0;
+    }
+
+    .content .word {
+        font-size: 1.5rem;
+        letter-spacing: 17px;
+    }
+
+    .content p {
+        font-size: 1rem;
+    }
+
+    .content input {
+        font-size: 1rem;
+        height: 40px;
+    }
+
+    .gameContainer .message {
+        font-size: .8rem;
+    }
+
+    .content button {
+        font-size: 1rem;
+        width: 70%;
+        padding: 10px;
+    }
 }
