@@ -71,6 +71,10 @@ section {
     gap: var(--mediumSpacing);
 }
 
+section.gameContainer {
+    gap: var(--smallSpacing);
+}
+
 img {
     width: 100%;
     height: 100%;
@@ -141,9 +145,41 @@ p {
 
 button {
     cursor: pointer;
+    margin: var(--standardSpacing);
+    border: none;
+    outline: none;
+    padding: 15px 30px;
+    border-radius: var(--borderRadiusSmall);
+    font-size: 1.2rem;
+    font-weight: 500;
+    box-shadow: 5px 5px 5px 1px #6e6e6e5b;
+    transition: .3s;
+    background: var(--secondaryColor);
 }
 
-a .btn {
+button:hover {
+    transform: scale(1.05);
+    background: #77a6c7;
+}
+
+button:active {
+    transform: scale(.95);
+}
+
+.restart {
+    background: rgb(96, 196, 96);
+}
+
+.restart:hover {
+    transform: scale(1.05);
+    background: rgb(94, 187, 94);
+}
+
+.restart:active {
+    transform: scale(.95);
+}
+
+/* a .btn {
     background: var(--interactableColor);
     padding: var(--standardSpacing) var(--mediumSpacing);
     text-decoration: none;
@@ -153,13 +189,14 @@ a .btn {
 a .btn:hover {
     background: var(--hoverButtonColor);
     transform: scale(1.1);
-}
+} */
 
+/* 
 article {}
 
 a {}
 
-i {}
+i {} */
 
 
 /* --- GAMECARDS --- */
@@ -179,6 +216,10 @@ a.gameCard {
 a.gameCard:hover {
     transform: scale(1.05);
     background: var(--primaryColor);
+}
+
+a.gameCard:active {
+    transform: scale(.95);
 }
 
 a.gameCard .firstContent {
@@ -235,6 +276,10 @@ a.gameCard:hover .secondContent {
 
 }
 
+.gameContainer .content {
+    margin: 10px 20px 35px;
+}
+
 .content p {
     font-size: 1.2rem;
     margin-bottom: var(--smallSpacing);
@@ -245,7 +290,6 @@ a.gameCard:hover .secondContent {
 }
 
 .content input {
-    width: 100%;
     height: 60px;
     font-size: 1.2rem;
     outline: none;
@@ -270,12 +314,8 @@ a.gameCard:hover .secondContent {
 
 }
 
-
 /* --- WORD SCRAMBLE --- */
 
-.gameContainer .content {
-    margin: 25px 20px 35px;
-}
 
 .content .word {
     font-size: 2rem;
@@ -297,46 +337,67 @@ a.gameCard:hover .secondContent {
     margin: 0;
 }
 
-.content .details {
+.gardenMixUp .content .details {
     margin: 25px 25px var(--smallSpacing);
     display: flex;
     justify-content: space-between;
 }
 
-.content .buttonContainer {
+.gardenMixUp .content input {
+    width: 100%;
+
+}
+
+.gardenMixUp .content .buttonContainer {
     display: flex;
     justify-content: center;
 }
 
-.content button {
-    margin: var(--standardSpacing);
-    border: none;
-    outline: none;
-    padding: 15px 0;
+
+.gardenMixUp button {
     width: 50%;
-    border-radius: var(--borderRadiusSmall);
-    font-size: 1.2rem;
-    font-weight: 500;
-    box-shadow: 5px 5px 5px 1px #6e6e6e5b;
-    transition: .3s;
+
 }
 
-.content .checkWord {
-    background: var(--secondaryColor);
+/* --- NUMBER GUESSING--- */
+
+.numberGuessing .details,
+.numberGuessing .chances {
+    text-align: center;
 }
 
-.content .checkWord:hover {
-    transform: scale(1.05);
-    background: #77a6c7;
+.numberGuessing .details p {
+    min-height: 1rem;
 }
 
-.content .restart {
-    background: rgb(96, 196, 96);
+.numberGuessing .details p:first-child {
+    font-weight: 600;
 }
 
-.content .restart:hover {
-    transform: scale(1.05);
-    background: rgb(94, 187, 94);
+.numberGuessing .details span {
+    text-decoration: underline;
+}
+
+.numberGuessing .inputContainer {
+    display: flex;
+    width: 400px;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.numberGuessing input,
+.numberGuessing button {
+    width: calc(100%/2);
+}
+
+.numberGuessing input {
+    text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    display: none;
 }
 
 
@@ -348,8 +409,7 @@ a.gameCard:hover .secondContent {
     }
 
 
-
-    /* --- WORD SCRAMBLE --- */
+    /* --- GAME AREA --- */
 
     .gameContainer {
         width: 100%;
@@ -363,27 +423,36 @@ a.gameCard:hover .secondContent {
         margin-top: 0;
     }
 
-    .content .word {
+    /* --- WORD SCRAMBLE --- */
+
+
+    .gardenMixUp .content .word {
         font-size: 1.5rem;
         letter-spacing: 17px;
     }
 
-    .content p {
+    .gardenMixUp .content p {
         font-size: 1rem;
     }
 
-    .content input {
+    .gardenMixUp .content input {
         font-size: 1rem;
         height: 40px;
     }
 
-    .gameContainer .message {
+    .gardenMixUp .gameContainer .message {
         font-size: .8rem;
     }
 
-    .content button {
+    .gardenMixUp .content button {
         font-size: 1rem;
         width: 70%;
         padding: 10px;
+    }
+
+    /* --- NUMBER GUESSING --- */
+
+    .numberGuessing .inputContainer {
+        width: 90%;
     }
 }

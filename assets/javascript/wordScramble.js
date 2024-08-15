@@ -93,11 +93,9 @@ function checkWord() {
         clearInterval(timer);
         words.push.apply(words, tempWords);
         tempWords = [];
-        console.log("words: ", words)
-        console.log("Temp words: ", tempWords)
         checkBtnEl.classList.add("hidden")
         restartBtnEl.classList.remove("hidden")
-        userWordEl.setAttribute("disabled", "disabled")
+        userWordEl.disabled = true;
         return messageEl.textContent = `Oops! "${userInput.toLocaleUpperCase()}" was not the correct word, it was "${correctWord.toLocaleUpperCase()}". Glittergumber doesn't have any more words on his list.`
     }
 
